@@ -7,7 +7,11 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - href: barplots.qmd
+        text: Team comparison
+      - href: player_performance.qmd
+        text: Wizzards star player performance
+
 
 format:
   html:
