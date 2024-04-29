@@ -1,0 +1,90 @@
+---
+title: Team Analysis
+---
+## Washington Wizard performance 
+
+In order to help the Washington Wizzards improve their performance, we need to know what is its weakness and strength. It is obviously unfair if we compare it to the best teams in the league, so we decide to compare Washington Wizzards to the average of the league(excluding Washington Wizzards) in terms of every aspect of the game of basketball. 
+
+
+```{python}
+#| code-fold: true
+import pandas as pd
+import numpy as np
+
+```
+
+```{python}
+#| code-fold: true
+teams = pd.read_excel("Data23-24/teams_season_compare.xlsx")
+wiz = pd.read_excel("Data23-24/wiz.xlsx")
+
+```
+
+```{python}
+#| code-fold: true
+import ipywidgets as widgets
+from IPython.display import display
+teams = teams[teams['Team']!= 'Washington Wizards']
+teams_mean = teams.mean(numeric_only=True)
+teams_mean = pd.DataFrame(teams_mean).T
+teams_mean=teams_mean.drop(columns='Rk')
+def display_dataframe(rows):
+    display(teams.head(rows))
+rows_slider = widgets.IntSlider(min=1, max=len(teams), value=5, description='Rows:')
+def update_display(event):
+    display_dataframe(rows=event['new'])
+
+rows_slider.observe(update_display, 'value')
+
+# Display the initial DataFrame
+display_dataframe(rows_slider.value)
+
+# Display the slider widget
+display(rows_slider)
+```
+
+```{python}
+#| code-fold: true
+wiz = wiz.iloc[[1]]
+wiz = wiz.drop(columns='Unnamed: 0')
+df = pd.concat([wiz,teams_mean])
+df = df.drop(columns='G')
+per = ['FG%','3P%','2P%','FT%']
+df[per]=df[per].multiply(100)
+```
+
+```{python}
+#| code-fold: true
+import plotly.graph_objs as go
+row1 = df.iloc[0]  
+row2 = df.iloc[1]
+labels = df.columns
+
+# Create trace for row1
+trace1 = go.Bar(
+    x=labels,
+    y=row1,
+    name='Washington Wizard'
+)
+
+# Create trace for row2
+trace2 = go.Bar(
+    x=labels,
+    y=row2,
+    name='Mean of the Rest'
+)
+
+# Create layout
+layout = go.Layout(
+    title='Comparison of Washington Wizard and the Mean of rest of the teams',
+    barmode='group'  # This stacks the bars on top of each other
+)
+
+# Combine traces and layout
+fig = go.Figure(data=[trace1, trace2], layout=layout)
+
+# Plot the figure
+fig.show()
+```
+
+From the bar plot we see the statistics of different aspect of the basketball game. We see that some Wizards had some of the stats above the leagues average, if we look closely, we can see that they are actually shots attempts(both 3 point shot and 2 point shot) , shots made(both 3 point shots and 2 point shots), and turnovers(TOV). In other word, although Wizards has taken more shots and made more shots than the league's average, their 3 point shooting percantage percentage is below league's average and their 2 point shooting percentage is only 0.02% higher than the leagues average, which means that Wizards is an ineffient team in terms of offensive end. Furthermore, we can see that Wizards did a bad job on taking care of the ball offensivly and rebounding with turnover above the league's average and total rebound below the league's average. These two are crucial factors for the game of basketball.  

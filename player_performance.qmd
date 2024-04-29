@@ -1,0 +1,108 @@
+---
+title: Washington Wizard Star player performance
+---
+
+# Wizard Star Performance
+
+To further evaluate and improve the performance of the whole team, we need to examine how the star players perform. The star players of the Washington Wizards are Jordan Poole and Kyle Kuzma, and we will take a look at their performance throughout their career.
+
+## Jordan Poole
+
+```{python}
+#| code-fold: true
+import pandas as pd
+import numpy as np
+import plotly as ply
+```
+
+```{python}
+#| code-fold: true
+JP = pd.read_excel('Data23-24\JP_career.xlsx')
+KK = pd.read_excel('Data23-24\KK_career.xlsx')
+col_d = ['Age','Lg','Pos', 'Awards','Tm']
+JP = JP.drop(columns=col_d)
+JP = JP.drop(JP.tail(4).index)
+JP
+```
+
+```{python}
+#| code-fold: true
+from plotly.subplots import make_subplots
+import plotly.graph_objects as go
+# Define available stats for dropdown
+import plotly.express as px
+numerical_columns = JP.select_dtypes(include=['float64', 'int64']).columns
+available_stats = numerical_columns.tolist()  # Assuming numerical_columns is a pandas Index or Series
+
+# Create dropdown menu
+dropdown = go.layout.Updatemenu(
+    buttons=list([
+        dict(label=stat, method='update', args=[{'visible': [stat == col for col in numerical_columns]}])
+        for stat in available_stats
+    ]),
+    direction='down', showactive=True
+)
+
+# Create traces for each stat
+traces = [
+    go.Scatter(x=JP.index, y=JP[stat], mode='lines', name=stat) for stat in available_stats
+]
+
+# Create layout with dropdown menu and initial trace visibility
+layout = go.Layout(
+    title='Jordan Poole Stats Over Seasons',
+    xaxis=dict(title='Season'),
+    yaxis=dict(title='Stats Value'),
+    updatemenus=[dropdown],  # Wrap the dropdown in a list
+)
+
+# Create figure
+fig = go.Figure(data=traces, layout=layout)
+
+# Show the figure
+fig.show()
+```
+
+
+
+```{python}
+#| code-fold: true
+KK = KK.drop(columns=col_d)
+KK = KK.drop(KK.tail(4).index)
+KK
+
+```
+```{python}
+#| code-fold: true
+numerical_columnsk = KK.select_dtypes(include=['float64', 'int64']).columns
+available_stats = numerical_columnsk.tolist()  # Assuming numerical_columns is a pandas Index or Series
+
+# Create dropdown menu
+dropdown = go.layout.Updatemenu(
+    buttons=list([
+        dict(label=stat, method='update', args=[{'visible': [stat == col for col in numerical_columnsk]}])
+        for stat in available_stats
+    ]),
+    direction='down', showactive=True
+)
+
+# Create traces for each stat
+traces = [
+    go.Scatter(x=KK.index, y=KK[stat], mode='lines', name=stat) for stat in available_stats
+]
+
+# Create layout with dropdown menu and initial trace visibility
+layout = go.Layout(
+    title='Kyle Kuzma Stats Over Seasons',
+    xaxis=dict(title='Season'),
+    yaxis=dict(title='Stats Value'),
+    updatemenus=[dropdown],  # Wrap the dropdown in a list
+)
+
+# Create figure
+fig = go.Figure(data=traces, layout=layout)
+
+# Show the figure
+fig.show()
+```
+
