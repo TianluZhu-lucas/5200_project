@@ -1,0 +1,288 @@
+---
+title: "allplayer"
+format: html
+editor: visual
+---
+
+## Introduction:
+
+This code is all about player shooting performance between Washington wizards and Boston Celtics.
+
+It displays all the interactive graphs which visualize and compare the shooting performance of Washington wizards and Boston Celtics players  
+
+## Running Code
+
+```{r message=TRUE, warning=TRUE}
+library(plotly)
+library(readxl)
+```
+
+```{r}
+data <- read_excel("/Users/yingminhe/Downloads/allplayer_23-24.xlsx")
+head(data)
+```
+
+```{r echo=FALSE}
+wizards_players <- subset(data, Tm == "WAS")
+celtics_players <- subset(data, Tm == "BOS")
+```
+
+```{r echo=FALSE}
+# Create a scatter plot
+plot <- plot_ly()
+
+# Add traces for each team
+plot <- add_trace(plot, x = wizards_players$PTS, y = wizards_players$AST, mode = "markers", type = "scatter", name = "Washington Wizards")
+plot <- add_trace(plot, x = celtics_players$PTS, y = celtics_players$AST, mode = "markers", type = "scatter", name = "Boston Celtics")
+
+# Customize the layout
+plot <- layout(plot, title = "Player Shooting Performance Comparison",
+               xaxis = list(title = "PTS"),
+               yaxis = list(title = "AST"))
+
+# Show the plot
+plot
+```
+
+```{r echo=FALSE}
+# Filter out rows with missing shooting statistics
+wizards_players <- na.omit(wizards_players[, c("Player", "FG%", "3P%", "FT%")])
+celtics_players <- na.omit(celtics_players[, c("Player", "FG%", "3P%", "FT%")])
+# Create an interactive stacked bar chart
+plot <- plot_ly() %>%
+  add_trace(data = wizards_players, x = ~Player, y = ~`FG%`, name = 'FG% - Washington Wizards', type = 'bar') %>%
+  add_trace(data = celtics_players, x = ~Player, y = ~`FG%`, name = 'FG% - Boston Celtics', type = 'bar') %>%
+  add_trace(data = wizards_players, x = ~Player, y = ~`3P%`, name = '3P% - Washington Wizards', type = 'bar') %>%
+  add_trace(data = celtics_players, x = ~Player, y = ~`3P%`, name = '3P% - Boston Celtics', type = 'bar') %>%
+  add_trace(data = wizards_players, x = ~Player, y = ~`FT%`, name = 'FT% - Washington Wizards', type = 'bar') %>%
+  add_trace(data = celtics_players, x = ~Player, y = ~`FT%`, name = 'FT% - Boston Celtics', type = 'bar')
+
+# Customize layout
+plot <- layout(plot, title = "Player Shooting Performance Comparison",
+               xaxis = list(title = "Player"),
+               yaxis = list(title = "Shooting Percentage"),
+               barmode = 'stack')
+
+# Show the plot
+plot
+```
+
+```{r}
+# Define custom colors for each team
+wizards_color <- "#1E90FF"  # Blue
+celtics_color <- "#008000"  # Green
+
+# Create a plotly line chart
+plot_ly() %>%
+  add_lines(data = wizards_players, x = ~Player, y = ~`3P%`, color = I(wizards_color), name = "Wizards") %>%
+  add_lines(data = celtics_players, x = ~Player, y = ~`3P%`, color = I(celtics_color), name = "Celtics") %>%
+  layout(title = "Three-Point Shooting Performance: Washington Wizards vs Boston Celtics",
+         xaxis = list(title = "Player Name"),
+         yaxis = list(title = "Three-Point Percentage"),
+         legend = list(x = 1, y = 1, xanchor = "right", yanchor = "top", orientation = "h"))  # Set legend position to top right
+```
+
+```{r}
+# Define custom colors for each team
+wizards_color <- "#FF5733"  # Red
+celtics_color <- "#3366CC"  # Blue
+
+# Create a plotly bar chart
+plot_ly() %>%
+  add_trace(data = wizards_players, x = ~Player, y = ~`3P%`, name = "Washington Wizards", type = 'bar', marker = list(color = wizards_color)) %>%
+  add_trace(data = celtics_players, x = ~Player, y = ~`3P%`, name = "Boston Celtics", type = 'bar', marker = list(color = celtics_color)) %>%
+  layout(title = "Three-Point Shooting Performance: Washington Wizards vs Boston Celtics",
+         xaxis = list(title = "Player Name"),
+         yaxis = list(title = "Three-Point Percentage"),
+         barmode = 'group')
+
+```
+
+When we turn our gaze to the forwards, the contrast in shooting performance becomes even more pronounced. Kyle Kuzma and Jayson Tatum, (these two player all play a roles as leading representing their respective teams, have been dissected through Points Per Shot (PPS) statistics to illustrate this disparity.
+
+```{r}
+library(tidyverse)
+library(mgcv)
+library(nbastatR)
+
+#Double size to acquire shot data
+Sys.setenv("VROOM_CONNECTION_SIZE" = 131072 * 2)
+
+#Source data for court plotting
+source("https://raw.githubusercontent.com/toddwschneider/ballr/master/plot_court.R")
+source("https://raw.githubusercontent.com/toddwschneider/ballr/master/court_themes.R")
+
+# Get all NBA teams
+nba_teams <- nbastatR::nba_teams() %>% dplyr::filter(isNonNBATeam == 0,
+                                                    idDivision > 0)
+
+#Acquire shot data
+season_shots_list <- 1:nrow(nba_teams) %>%
+  purrr::map(function(x) nbastatR::teams_shots(team_ids = nba_teams$idTeam[x],
+                                               seasons = 2024), .progress = T)
+
+#Create shot locations + FG% + Points Per Shot
+season_shots <- season_shots_list %>% bind_rows() %>%
+  mutate(shot_attempt = ifelse(isShotAttempted == T,1,0),
+         shot_made = ifelse(isShotMade == T,1,0),
+         loc_x = -as.numeric(as.character(locationX))/10,
+         loc_y = as.numeric(as.character(locationY))/10 + hoop_center_y,
+         pps = case_when(typeShot == "2PT Field Goal" & shot_made == 1 ~ 2,
+                         typeShot == "3PT Field Goal" & shot_made == 1 ~ 3,
+                         typeShot == "2PT Field Goal" & shot_made == 0 ~ 0,
+                         typeShot == "3PT Field Goal" & shot_made == 0 ~ 0,
+                         TRUE ~ NA_real_))
+
+
+season_shot_pct <- season_shots %>% group_by(zoneBasic) %>%
+  summarise(makes = sum(shot_made),
+            attempts = sum(shot_attempt),
+            pps = sum(pps)) %>%
+  ungroup() %>% mutate(lg_xfg_pct = round(makes/attempts,3),
+                       lg_pps = round(pps/attempts,3)) %>%
+  select(zoneBasic,lg_xfg_pct,lg_pps)
+
+#Create GAM function for xFG% and PPS
+xfg_aa_gam_fit <- function(d) {
+  gam(as.numeric(xfg_pct_aa) ~
+        s(loc_x, loc_y),
+      data = d)
+}
+
+pps_aa_gam_fit <- function(d) {
+  gam(as.numeric(pps_aa) ~
+        s(loc_x, loc_y),
+      data = d)
+}
+
+#Create prediction grid
+grid_predict <- function(fit){
+  grid <- expand.grid(loc_x = seq(-24,24,length=100),
+                      loc_y = seq(0,32,length=100))
+  grid$lp <- predict(fit,grid, type = "response")
+  
+  grid
+}
+
+#Heatmap
+shot_heatmap_chart <- function(player, court_theme = court_themes$dark,
+                               type = "PPS") {
+  
+  if (type == "PPS") {
+    p_title <- paste(player,"PPS Above Avg Heatmap")
+    plot_lims <- c(-1,1)
+    plot_breaks <- c(-1,0,1)
+  } else {
+    p_title <- paste(player,"xFG% Above Avg Heatmap")
+    plot_lims <- c(-0.3,0.3)
+    plot_breaks <- c(-0.3,0,0.3)
+  }
+  
+  df <- season_shots %>% dplyr::filter(namePlayer == player)
+  
+  shot_pct <- df %>% group_by(zoneBasic) %>%
+    summarise(makes = sum(shot_made),
+              attempts = sum(shot_attempt),
+              pps = sum(pps)) %>%
+    ungroup() %>% mutate(xfg_pct = round(makes/attempts,3),
+                         pps = round(pps/attempts,3)) %>%
+    select(zoneBasic,xfg_pct,pps)
+  
+  if (type == "PPS") {
+    df <- df %>% select(-pps) %>%
+      left_join(.,shot_pct,by="zoneBasic") %>%
+      left_join(.,season_shot_pct,by="zoneBasic") %>%
+      mutate(pps_aa = pps - lg_pps,
+             xfg_pct_aa = xfg_pct - lg_xfg_pct) %>%
+      pps_aa_gam_fit() %>%
+      grid_predict()
+  } else {
+    df <- df %>% select(-pps) %>%
+      left_join(.,shot_pct,by="zoneBasic") %>%
+      left_join(.,season_shot_pct,by="zoneBasic") %>%
+      mutate(pps_aa = pps - lg_pps,
+             xfg_pct_aa = xfg_pct - lg_xfg_pct) %>%
+      xfg_aa_gam_fit() %>%
+      grid_predict()
+  }
+  
+  # plot_court() +
+  #   geom_tile(data=df,aes(x=loc_x,y=loc_y,
+  #                         fill = lp)) +
+  #   scale_fill_viridis_c(
+  #     "%     ",
+  #     limits = plot_lims,
+  #     breaks = plot_breaks,
+  #     option = "inferno",
+  #     guide = guide_colorbar(barwidth = 15)
+  #   ) +
+  #   geom_path(data = court_points,
+  #             aes(x = x, y = y, group = desc),
+  #             color = court_theme$lines) +
+  #   xlim(-24,24) +
+  #   ylim(0,32) +
+  #   coord_fixed() +
+  #   theme(legend.text = element_text(size = rel(0.6))) +
+  #   ggtitle(label = p_title,
+  #           subtitle = "2023-24 Season")
+  plot_court() +
+  geom_tile(data=df, aes(x=loc_x, y=loc_y, fill = lp)) +
+  scale_fill_gradient2(
+    low = "#00008B", high = "#B22222", mid = "#FFFFFF",
+    midpoint = 0,
+    limits = plot_lims,
+    breaks = plot_breaks,
+    labels = c("-1", "0", "1"), # Add labels for each break
+    guide = guide_colorbar(barwidth = 15)
+  ) +
+  geom_path(data = court_points,
+            aes(x = x, y = y, group = desc),
+            color = court_theme$lines) +
+  xlim(-24, 24) +
+  ylim(0, 32) +
+  coord_fixed() +
+  theme(legend.text = element_text(size = rel(0.6))) +
+  ggtitle(label = p_title, subtitle = "2023-24 Season")
+  
+}
+
+#Example
+shot_heatmap_chart("Jordan Poole", type = "PPS")
+shot_heatmap_chart("Jordan Poole", type = "xFG%")
+shot_heatmap_chart("Donovan Mitchell", type = "PPS")
+shot_heatmap_chart("Donovan Mitchell", type = "xFG%")
+shot_heatmap_chart("Kyle Kuzma", type = "PPS")
+shot_heatmap_chart("Kyle Kuzma", type = "xFG%")
+shot_heatmap_chart("Jayson Tatum", type = "PPS")
+shot_heatmap_chart("Jayson Tatum", type = "xFG%")
+```
+
+Delving deeper, we turn the spotlight on individual performances using Jordan Poole’s shot charts for Points Per Shot (PPS) and expected Field Goal Percentage (xFG%) (see Screen Shots 1.24.49 PM and 1.25.02 PM). These visualizations map Poole's shooting efficiency across different court zones. The shading intensity reflects how his performance either exceeds or falls short of the league average. These insights can pinpoint not only the strengths and weaknesses of individual players but can also guide the team's development focus and game strategy.
+
+## **Limitations of the Current Analysis**
+
+### **Data Scope and Availability**
+
+One significant limitation of our analysis lies in the data's scope and availability. We primarily focused on , which, while crucial, do not encompass all aspects of a player's impact on the game. Defensive contributions, playmaking abilities, and other intangible elements like leadership and game IQ are not captured in these shooting metrics. Additionally, our analysis could be constrained by the temporal range of the data, as we have concentrated solely on the 2023-24 season. This snapshot provides limited insight into long-term trends and player development over time.
+
+### **Reliance on Publicly Available Metrics**
+
+Our project heavily relies on publicly available metrics like Points Per Shot (PPS) and expected Field Goal Percentage (xFG%). These metrics, while informative, can sometimes oversimplify complex game situations. For instance, they might not adequately account for the quality of opposition defenses or the context of shots taken (e.g., end of shot clock scenarios).
+
+## **Future Directions**
+
+### **Expanding Data Dimensions**
+
+To build on the current analysis, future studies could incorporate more comprehensive data sets that include defensive statistics, plus/minus scores, win shares, player efficiency ratings, and advanced metrics that consider shot context. This expansion would provide a more holistic view of a player's overall effectiveness and contribution to the team's success.
+
+### **Longitudinal Studies**
+
+Conducting longitudinal studies over multiple seasons could also provide deeper insights into player development and team dynamics. This approach would allow us to identify patterns and trends, potentially leading to more predictive analytics that can forecast future performance based on past data.
+
+### **Integration of Machine Learning**
+
+Leveraging machine learning techniques could refine our analysis further. For instance, predictive models could be developed to forecast shooting performances based on a variety of factors, including player fatigue, opposition strength, and even psychological factors such as player confidence and team morale.
+
+### **Real-Time Data Utilization**
+
+Lastly, integrating real-time game data could revolutionize our interactive visualizations, allowing fans and analysts alike to see live updates and perhaps even predictive insights during actual games. This would not only enhance the user experience but also provide immediate contextual analysis, adding a dynamic layer to our interactive tools.
