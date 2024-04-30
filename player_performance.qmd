@@ -1,6 +1,79 @@
 ---
 title: Washington Wizard player performances
 ---
+# Wizard Player Performance
+Following a general assessment on the team performance for Washington Wizard, we wish to evaluate the team's individual player contribution and find out the factor for causing the team's poor performance. 
+
+```{python}
+#| code-fold: true
+import pandas as pd
+import plotly.graph_objects as go
+import plotly.express as px
+
+player = pd.read_excel("Data23-24/allplayeradv_23-24.xlsx")
+player.dropna(axis = 1, inplace = True)
+
+player = player[['Player', 'Tm','OBPM','DBPM']]
+player.drop_duplicates(subset=['Player'], inplace=True)
+player.head()
+
+WAS_players = player.loc[player['Tm'] == 'WAS']
+
+all_players_trace = go.Scatter(
+    x=player['OBPM'],
+    y=player['DBPM'],
+    mode='markers',
+    marker=dict(color='black'),  # All players are blue initially
+    text=player['Player'],
+    name='All Players'
+)
+
+selected_traces = []
+
+for index, row in WAS_players.iterrows():
+    trace = go.Scatter(
+        x=[row['OBPM']],
+        y=[row['DBPM']],
+        mode='markers',
+        marker=dict(color='red'),  # All initially blue
+        text=row['Player'],
+        name=row['Player'],
+        visible=False  # Initially invisible
+    )
+    selected_traces.append(trace)
+
+# Add the traces for selected WAS players to the data list
+data = [all_players_trace] + selected_traces
+
+# Create dropdown menu options
+dropdown_options = [{'label': player_name, 
+                     'method': 'update', 
+                     'args': [{'visible': [True] + [False] * len(WAS_players)}]} for player_name in WAS_players['Player']]
+
+# Update the color of selected player to red
+for i in range(len(WAS_players)):
+    dropdown_options[i]['args'][0]['visible'][i + 1] = True
+    dropdown_options[i]['args'][0]['marker'] = dict(color=['red'] + ['black'] * len(WAS_players))
+
+# Create dropdown menu
+updatemenus = [{'buttons': dropdown_options, 'direction': 'down', 'showactive': True}]
+
+# Layout
+layout = go.Layout(
+    title='Player BPM',
+    xaxis=dict(title='OBPM'),
+    yaxis=dict(title='DBPM'),
+    hovermode='closest',
+    updatemenus=updatemenus
+)
+
+fig = go.Figure(data=data, layout=layout)
+
+fig.show()
+```
+
+The scatterplot presented above features an x-axis representing Offensive Box Plus/Minus and a y-axis representing Defensive Box Plus/Minus. These two factors evaluate a player's contribution to both offense and defense. A high score in each factor indicates the player's irreplaceability for the team's offense or defense.
+
 
 # Wizard Star Performance
 

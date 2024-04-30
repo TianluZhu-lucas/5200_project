@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.549">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>quarto_p - Comparison Analysis on Jordan Poole and Kyle Kuzma with their peers</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script type="text/javascript">
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+if (typeof require !== 'undefined') {
+require.undef("plotly");
+requirejs.config({
+    paths: {
+        'plotly': ['https://cdn.plot.ly/plotly-2.12.1.min']
+    }
+});
+require(['plotly'], function(Plotly) {
+    window._Plotly = Plotly;
+});
+}
+</script>
+
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">quarto_p</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./barplots.html"> 
+<span class="menu-text">Team comparison</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./player_performance.html"> 
+<span class="menu-text">Wizzards star player performance</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Comparison Analysis on Jordan Poole and Kyle Kuzma with their peers</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>In this section, we plan to utilize a Radar Chart for a comparative analysis of Jordan Poole and Kyle Kuzma alongside other NBA players in their respective positions. We have restricted our comparison to players who have participated in at least 60 games and averaged a minimum of 30 minutes on the court per game. We have selected eight key metrics for this comparison: PTS (Points Per Game), AST (Assists Per Game), TRB (Rebounds Per Game), 3P% (Three-Point Percentage), USG% (Usage Percentage), TS% (True Shooting Percentage), DWS (Defensive Win Shares), and PER (Player Efficiency Rating). These metrics will help highlight the strengths and weaknesses of Jordan Poole and Kyle Kuzma relative to their peers.</p>
+<div id="512c85c6" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>adv_data <span class="op">=</span> pd.read_excel(<span class="st">'Data23-24/allplayeradv_23-24.xlsx'</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>reg_data <span class="op">=</span> pd.read_excel(<span class="st">'Data23-24/allplayer_23-24.xlsx'</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># we choose SG and PF have more than 60 games and more than 30 minutes per game</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>SG_names <span class="op">=</span> [<span class="st">'Jordan Poole'</span>,<span class="st">'Jalen Green'</span>,<span class="st">'Derrick White'</span>,<span class="st">'Dejounte Murray'</span>,<span class="st">'Cam Thomas'</span>,<span class="st">'Anthony Edwards'</span>,<span class="st">'Grayson Allen'</span>,<span class="st">'Scottie Barnes'</span>,<span class="st">'Bogdan Bogdanović'</span>,<span class="st">'Kentavious Caldwell-Pope'</span>,<span class="st">'Austin Reaves'</span>,<span class="st">'Terry Rozier'</span>,<span class="st">'Devin Vassell'</span>]</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>PF_names <span class="op">=</span> [<span class="st">'Giannis Antetokounmpo'</span>,<span class="st">'Paolo Banchero'</span>,<span class="st">'Jimmy Butler'</span>,<span class="st">'Kevin Durant'</span>,<span class="st">'Paul George'</span>,<span class="st">'Aaron Gordon'</span>,<span class="st">'Tobias Harris'</span>,<span class="st">'LeBron James'</span>,<span class="st">'Kyle Kuzma'</span>,<span class="st">'Pascal Siakam'</span>,<span class="st">'Jabari Smith Jr.'</span>,<span class="st">'Jayson Tatum'</span>,<span class="st">'Karl-Anthony Towns'</span>,<span class="st">'P.J. Washington'</span>,<span class="st">'Jalen Williams'</span>,<span class="st">'Zion Williamson'</span>]</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>SG_df_reg <span class="op">=</span> reg_data[reg_data[<span class="st">'Player'</span>].isin(SG_names)]</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>SG_df_reg.drop_duplicates(subset<span class="op">=</span>[<span class="st">'Player'</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>SG_df_adv <span class="op">=</span> adv_data[adv_data[<span class="st">'Player'</span>].isin(SG_names)]</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>SG_df_adv.drop_duplicates(subset<span class="op">=</span>[<span class="st">'Player'</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>PF_df_reg <span class="op">=</span> reg_data[reg_data[<span class="st">'Player'</span>].isin(PF_names)]</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>PF_df_reg.drop_duplicates(subset<span class="op">=</span>[<span class="st">'Player'</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>PF_df_adv <span class="op">=</span> adv_data[adv_data[<span class="st">'Player'</span>].isin(PF_names)]</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>PF_df_adv.drop_duplicates(subset<span class="op">=</span>[<span class="st">'Player'</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">#columns_to_include = ['Player','OWS','DWS','VORP','TS%','PTS','AST','TRB','3P%']</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>SG_total <span class="op">=</span> pd.merge(SG_df_adv, SG_df_reg, on<span class="op">=</span><span class="st">'Player'</span>, how<span class="op">=</span><span class="st">'inner'</span>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>SG_final <span class="op">=</span> SG_total.loc[:, [<span class="st">'Player'</span>,<span class="st">'USG%'</span>,<span class="st">'DWS'</span>,<span class="st">'PER'</span>,<span class="st">'TS%'</span>,<span class="st">'PTS'</span>,<span class="st">'AST'</span>,<span class="st">'TRB'</span>,<span class="st">'3P%'</span>]]</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>PF_total <span class="op">=</span> pd.merge(PF_df_adv, PF_df_reg, on<span class="op">=</span><span class="st">'Player'</span>, how<span class="op">=</span><span class="st">'inner'</span>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>PF_final <span class="op">=</span> PF_total.loc[:, [<span class="st">'Player'</span>,<span class="st">'USG%'</span>,<span class="st">'DWS'</span>,<span class="st">'PER'</span>,<span class="st">'TS%'</span>,<span class="st">'PTS'</span>,<span class="st">'AST'</span>,<span class="st">'TRB'</span>,<span class="st">'3P%'</span>]]</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>PF_final <span class="op">=</span> PF_final.transpose()</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>SG_final <span class="op">=</span> SG_final.transpose()</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>PF_final <span class="op">=</span> PF_final.reset_index()</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>PF_final.columns <span class="op">=</span> PF_final.iloc[<span class="dv">0</span>]</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>PF_plot<span class="op">=</span> PF_final[<span class="dv">1</span>:].reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>PF_plot.rename(columns<span class="op">=</span>{<span class="st">'Player'</span>: <span class="st">'Splits'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>SG_final <span class="op">=</span> SG_final.reset_index()</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>SG_final.columns <span class="op">=</span> SG_final.iloc[<span class="dv">0</span>]</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>SG_plot<span class="op">=</span> SG_final[<span class="dv">1</span>:].reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>SG_plot.rename(columns<span class="op">=</span>{<span class="st">'Player'</span>: <span class="st">'Splits'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>SG_plot.iloc[<span class="dv">0</span>,<span class="dv">1</span>:] <span class="op">=</span> SG_plot.iloc[<span class="dv">0</span>,<span class="dv">1</span>:] <span class="op">*</span> <span class="dv">3</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>SG_plot.iloc[<span class="dv">1</span>,<span class="dv">1</span>:] <span class="op">=</span> SG_plot.iloc[<span class="dv">1</span>,<span class="dv">1</span>:] <span class="op">*</span> <span class="dv">20</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>SG_plot.iloc[<span class="dv">2</span>,<span class="dv">1</span>:] <span class="op">=</span> SG_plot.iloc[<span class="dv">2</span>,<span class="dv">1</span>:] <span class="op">*</span> <span class="dv">5</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>SG_plot.iloc[<span class="dv">3</span>,<span class="dv">1</span>:] <span class="op">=</span> SG_plot.iloc[<span class="dv">3</span>,<span class="dv">1</span>:] <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>SG_plot.iloc[<span class="dv">4</span>,<span class="dv">1</span>:] <span class="op">=</span> SG_plot.iloc[<span class="dv">4</span>,<span class="dv">1</span>:] <span class="op">*</span> <span class="dv">3</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>SG_plot.iloc[<span class="dv">5</span>,<span class="dv">1</span>:] <span class="op">=</span> SG_plot.iloc[<span class="dv">5</span>,<span class="dv">1</span>:] <span class="op">*</span> <span class="dv">15</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>SG_plot.iloc[<span class="dv">6</span>,<span class="dv">1</span>:] <span class="op">=</span> SG_plot.iloc[<span class="dv">6</span>,<span class="dv">1</span>:] <span class="op">*</span> <span class="dv">12</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>SG_plot.iloc[<span class="dv">7</span>,<span class="dv">1</span>:] <span class="op">=</span> SG_plot.iloc[<span class="dv">7</span>,<span class="dv">1</span>:] <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>SG_plot.set_index(<span class="st">'Splits'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>PF_plot.iloc[<span class="dv">0</span>,<span class="dv">1</span>:] <span class="op">=</span> PF_plot.iloc[<span class="dv">0</span>,<span class="dv">1</span>:] <span class="op">*</span> <span class="dv">3</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>PF_plot.iloc[<span class="dv">1</span>,<span class="dv">1</span>:] <span class="op">=</span> PF_plot.iloc[<span class="dv">1</span>,<span class="dv">1</span>:] <span class="op">*</span> <span class="dv">20</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>PF_plot.iloc[<span class="dv">2</span>,<span class="dv">1</span>:] <span class="op">=</span> PF_plot.iloc[<span class="dv">2</span>,<span class="dv">1</span>:] <span class="op">*</span> <span class="dv">3</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>PF_plot.iloc[<span class="dv">3</span>,<span class="dv">1</span>:] <span class="op">=</span> PF_plot.iloc[<span class="dv">3</span>,<span class="dv">1</span>:] <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>PF_plot.iloc[<span class="dv">4</span>,<span class="dv">1</span>:] <span class="op">=</span> PF_plot.iloc[<span class="dv">4</span>,<span class="dv">1</span>:] <span class="op">*</span> <span class="dv">3</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>PF_plot.iloc[<span class="dv">5</span>,<span class="dv">1</span>:] <span class="op">=</span> PF_plot.iloc[<span class="dv">5</span>,<span class="dv">1</span>:] <span class="op">*</span> <span class="dv">12</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>PF_plot.iloc[<span class="dv">6</span>,<span class="dv">1</span>:] <span class="op">=</span> PF_plot.iloc[<span class="dv">6</span>,<span class="dv">1</span>:] <span class="op">*</span> <span class="dv">8</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>PF_plot.iloc[<span class="dv">7</span>,<span class="dv">1</span>:] <span class="op">=</span> PF_plot.iloc[<span class="dv">7</span>,<span class="dv">1</span>:] <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>PF_plot.set_index(<span class="st">'Splits'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Users\zhuti\AppData\Local\Temp\ipykernel_8084\1169799151.py:14: SettingWithCopyWarning:
+
+
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+
+C:\Users\zhuti\AppData\Local\Temp\ipykernel_8084\1169799151.py:16: SettingWithCopyWarning:
+
+
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+
+C:\Users\zhuti\AppData\Local\Temp\ipykernel_8084\1169799151.py:19: SettingWithCopyWarning:
+
+
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+
+C:\Users\zhuti\AppData\Local\Temp\ipykernel_8084\1169799151.py:21: SettingWithCopyWarning:
+
+
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+</code></pre>
+</div>
+</div>
+<p>From the plot above, we could clearly see the difference between Jordan Poole and other shooting guards with more than 60 games played and 30 minutes averaged per game. Jordan Poole has the highest usage among these players, but does not show a significant lead on other metrics like PER, DWS. This means Jordan Poole is not a highly efficient player, and he is not likely to bring wins for Washington Wizards in this season.</p>
+<div id="652c883c" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a radar chart</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure()</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> [<span class="st">"Red"</span>, <span class="st">"Green"</span>,<span class="st">"Blue"</span>,<span class="st">"Orange"</span>,<span class="st">"Yellow"</span>,<span class="st">"Purple"</span>,<span class="st">"Cyan"</span>,<span class="st">"Magenta"</span>,<span class="st">"Lime"</span>,<span class="st">"Pink"</span>,<span class="st">"Teal"</span>,<span class="st">"Olive"</span>,<span class="st">"Brown"</span>]</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, column <span class="kw">in</span> <span class="bu">enumerate</span>(SG_plot.columns):</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    fig.add_trace(go.Scatterpolar(</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        r<span class="op">=</span>SG_plot[column].values,  <span class="co"># Access the column values for each car</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        theta<span class="op">=</span>SG_plot.index,       <span class="co"># Use the DataFrame index as categories</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        fill<span class="op">=</span><span class="st">'toself'</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        name<span class="op">=</span>column,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span>colors[i]),</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        visible<span class="op">=</span><span class="va">True</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Update the layout</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Comparison of Jordan Poole with selected Shooting Guards"</span>,</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    polar<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        radialaxis<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>            visible<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>            <span class="bu">range</span><span class="op">=</span>[<span class="dv">0</span>, <span class="dv">100</span>]  <span class="co"># Set range according to your data</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>updatemenus<span class="op">=</span>[{</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>        <span class="st">"type"</span>: <span class="st">"dropdown"</span>,</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>        <span class="st">"buttons"</span>: [</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"All players"</span>,</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"update"</span>,</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">True</span>, <span class="va">True</span>, <span class="va">True</span>,<span class="va">True</span>,<span class="va">True</span>,<span class="va">True</span>,<span class="va">True</span>,<span class="va">True</span>,<span class="va">True</span>,<span class="va">True</span>,<span class="va">True</span>,<span class="va">True</span>,<span class="va">True</span>]}]</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Grayson Allen vs. Jordan Poole"</span>,</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">True</span>, <span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>]}]</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Scottie Barnes vs. Jordan Poole"</span>,</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">True</span>, <span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>]}]</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Bogdan Bogdanović vs. Jordan Poole"</span>,</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">False</span>, <span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>]}]</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Kentavious Caldwell-Pope vs. Jordan Poole"</span>,</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>, <span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>]}]</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Anthony Edwards vs. Jordan Poole"</span>,</span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>, <span class="va">True</span>, <span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>]}]</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Jalen Green vs. Jordan Poole"</span>,</span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>]}]</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Dejounte Murray vs. Jordan Poole"</span>,</span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">False</span>,<span class="va">False</span>, <span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>]}]</span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Jordan Poole"</span>,</span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"update"</span>,</span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>]}]</span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Austin Reaves vs. Jordan Poole"</span>,</span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>]}]</span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Terry Rozier vs. Jordan Poole"</span>,</span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>]}]</span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Cam Thomas vs. Jordan Poole"</span>,</span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>]}]</span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Devin Vassell vs. Jordan Poole"</span>,</span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>]}]</span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Derrick White vs. Jordan Poole"</span>,</span>
+<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>]}]</span>
+<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a>        <span class="st">"direction"</span>: <span class="st">"down"</span>,</span>
+<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a>        <span class="st">"showactive"</span>: <span class="va">True</span>,</span>
+<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a>    }]</span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>                            <div id="2a965d0f-56ae-473a-ac55-d2089dfd1eb6" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("2a965d0f-56ae-473a-ac55-d2089dfd1eb6")) {                    Plotly.newPlot(                        "2a965d0f-56ae-473a-ac55-d2089dfd1eb6",                        [{"fill":"toself","line":{"color":"Red"},"name":"Grayson Allen","r":[43.5,44.0,69.0,67.9,40.5,45.0,46.8,46.1],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Green"},"name":"Scottie Barnes","r":[74.4,40.0,97.5,56.599999999999994,59.699999999999996,91.5,98.39999999999999,34.1],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Blue"},"name":"Bogdan Bogdanovi\u0107","r":[66.9,24.0,73.5,56.89999999999999,50.699999999999996,46.5,40.8,37.4],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Orange"},"name":"Kentavious Caldwell-Pope","r":[38.7,52.0,53.5,60.199999999999996,30.299999999999997,36.0,28.799999999999997,40.6],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Yellow"},"name":"Anthony Edwards","r":[96.89999999999999,94.0,98.5,57.49999999999999,77.69999999999999,76.5,64.80000000000001,35.699999999999996],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Purple"},"name":"Jalen Green","r":[82.19999999999999,58.0,73.5,54.1,58.800000000000004,52.5,62.400000000000006,33.2],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Cyan"},"name":"Dejounte Murray","r":[79.80000000000001,32.0,88.5,55.50000000000001,67.5,96.0,63.599999999999994,36.3],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Magenta"},"name":"Jordan Poole","r":[79.19999999999999,16.0,60.5,52.900000000000006,52.199999999999996,66.0,32.400000000000006,32.6],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Lime"},"name":"Austin Reaves","r":[60.900000000000006,40.0,77.5,61.3,47.7,82.5,51.599999999999994,36.7],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Pink"},"name":"Terry Rozier","r":[77.69999999999999,32.0,86.5,55.50000000000001,59.400000000000006,84.0,48.0,36.3],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Teal"},"name":"Cam Thomas","r":[91.5,24.0,80.5,55.400000000000006,67.5,43.5,38.400000000000006,36.4],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Olive"},"name":"Devin Vassell","r":[70.5,32.0,78.5,57.8,58.5,61.49999999999999,45.599999999999994,37.2],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Brown"},"name":"Derrick White","r":[55.800000000000004,66.0,84.5,61.1,45.599999999999994,78.0,50.400000000000006,39.6],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"polar":{"radialaxis":{"visible":true,"range":[0,100]}},"title":{"text":"Comparison of Jordan Poole with selected Shooting Guards"},"updatemenus":[{"buttons":[{"args":[{"visible":[true,true,true,true,true,true,true,true,true,true,true,true,true]}],"label":"All players","method":"update"},{"args":[{"visible":[true,false,false,false,false,false,false,true,false,false,false,false,false]}],"label":"Grayson Allen vs. Jordan Poole","method":"restyle"},{"args":[{"visible":[false,true,false,false,false,false,false,true,false,false,false,false,false]}],"label":"Scottie Barnes vs. Jordan Poole","method":"restyle"},{"args":[{"visible":[false,false,true,false,false,false,false,true,false,false,false,false,false]}],"label":"Bogdan Bogdanovi\u0107 vs. Jordan Poole","method":"restyle"},{"args":[{"visible":[false,false,false,true,false,false,false,true,false,false,false,false,false]}],"label":"Kentavious Caldwell-Pope vs. Jordan Poole","method":"restyle"},{"args":[{"visible":[false,false,false,false,true,false,false,true,false,false,false,false,false]}],"label":"Anthony Edwards vs. Jordan Poole","method":"restyle"},{"args":[{"visible":[false,false,false,false,false,true,false,true,false,false,false,false,false]}],"label":"Jalen Green vs. Jordan Poole","method":"restyle"},{"args":[{"visible":[false,false,false,false,false,false,true,true,false,false,false,false,false]}],"label":"Dejounte Murray vs. Jordan Poole","method":"restyle"},{"args":[{"visible":[false,false,false,false,false,false,false,true,false,false,false,false,false]}],"label":"Jordan Poole","method":"update"},{"args":[{"visible":[false,false,false,false,false,false,false,true,true,false,false,false,false]}],"label":"Austin Reaves vs. Jordan Poole","method":"restyle"},{"args":[{"visible":[false,false,false,false,false,false,false,true,false,true,false,false,false]}],"label":"Terry Rozier vs. Jordan Poole","method":"restyle"},{"args":[{"visible":[false,false,false,false,false,false,false,true,false,false,true,false,false]}],"label":"Cam Thomas vs. Jordan Poole","method":"restyle"},{"args":[{"visible":[false,false,false,false,false,false,false,true,false,false,false,true,false]}],"label":"Devin Vassell vs. Jordan Poole","method":"restyle"},{"args":[{"visible":[false,false,false,false,false,false,false,true,false,false,false,false,true]}],"label":"Derrick White vs. Jordan Poole","method":"restyle"}],"direction":"down","showactive":true,"type":"dropdown"}]},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('2a965d0f-56ae-473a-ac55-d2089dfd1eb6');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+<div id="b86cf466" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a radar chart</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure()</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>colors_PF <span class="op">=</span> [<span class="st">"Red"</span>, <span class="st">"Green"</span>,<span class="st">"Blue"</span>,<span class="st">"Orange"</span>,<span class="st">"Yellow"</span>,<span class="st">"Purple"</span>,<span class="st">"Cyan"</span>,<span class="st">"Magenta"</span>,<span class="st">"Lime"</span>,<span class="st">"Pink"</span>,<span class="st">"Teal"</span>,<span class="st">"Olive"</span>,<span class="st">"Brown"</span>,<span class="st">"Navy"</span>,<span class="st">"Maroon"</span>,<span class="st">"Coral"</span>]</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, column <span class="kw">in</span> <span class="bu">enumerate</span>(PF_plot.columns):</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    fig.add_trace(go.Scatterpolar(</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        r<span class="op">=</span>PF_plot[column].values,  <span class="co"># Access the column values for each car</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        theta<span class="op">=</span>PF_plot.index,       <span class="co"># Use the DataFrame index as categories</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        fill<span class="op">=</span><span class="st">'toself'</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        name<span class="op">=</span>column,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span>colors_PF[i]),</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        visible<span class="op">=</span><span class="va">True</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Update the layout</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Comparison of Kyle Kuzma and selected Power Forwards"</span>,</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    polar<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        radialaxis<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>            visible<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>            <span class="bu">range</span><span class="op">=</span>[<span class="dv">0</span>, <span class="dv">100</span>]  <span class="co"># Set range according to your data</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>updatemenus<span class="op">=</span>[{</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>        <span class="st">"type"</span>: <span class="st">"dropdown"</span>,</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>        <span class="st">"buttons"</span>: [</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"All players"</span>,</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"update"</span>,</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">True</span>, <span class="va">True</span>, <span class="va">True</span>,<span class="va">True</span>,<span class="va">True</span>,<span class="va">True</span>,<span class="va">True</span>,<span class="va">True</span>,<span class="va">True</span>,<span class="va">True</span>,<span class="va">True</span>,<span class="va">True</span>,<span class="va">True</span>,<span class="va">True</span>,<span class="va">True</span>,<span class="va">True</span>]}]</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Giannis Antetokounmpo vs. Kyle Kuzma"</span>,</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">True</span>, <span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>]}]</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Paolo Banchero vs. Kyle Kuzma"</span>,</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">True</span>, <span class="va">False</span>, <span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>]}]</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Jimmy Butler vs. Kyle Kuzma"</span>,</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">False</span>, <span class="va">True</span>, <span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>]}]</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Kevin Durant vs. Kyle Kuzma"</span>,</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>, <span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>]}]</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Paul George vs. Kyle Kuzma"</span>,</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>]}]</span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Aaron Gordon vs. Kyle Kuzma"</span>,</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>]}]</span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Tobias Harris vs. Kyle Kuzma"</span>,</span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>]}]</span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Lebron James vs. Kyle Kuzma"</span>,</span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>]}]</span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Kyle Kuzma"</span>,</span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"update"</span>,</span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>]}]</span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Pascal Siakam vs. Kyle Kuzma"</span>,</span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>]}]</span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Jabari Smith Jr. vs. Kyle Kuzma"</span>,</span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>]}]</span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Jayson Tatum vs. Kyle Kuzma"</span>,</span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>]}]</span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Karl-Anthony Towns vs. Kyle Kuzma"</span>,</span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>]}]</span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"P.J. Washington Towns vs. Kyle Kuzma"</span>,</span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>]}]</span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Jalen Williams vs. Kyle Kuzma"</span>,</span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>]}]</span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a>            },</span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a>                <span class="st">"label"</span>: <span class="st">"Zion Williamson vs. Kyle Kuzma"</span>,</span>
+<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a>                <span class="st">"method"</span>: <span class="st">"restyle"</span>,</span>
+<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a>                <span class="st">"args"</span>: [{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">False</span>,<span class="va">True</span>]}]</span>
+<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a>        <span class="st">"direction"</span>: <span class="st">"down"</span>,</span>
+<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a>        <span class="st">"showactive"</span>: <span class="va">True</span>,</span>
+<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a>    }]</span>
+<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>                            <div id="2e7b2e13-0b37-4965-8821-6390d58638b8" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("2e7b2e13-0b37-4965-8821-6390d58638b8")) {                    Plotly.newPlot(                        "2e7b2e13-0b37-4965-8821-6390d58638b8",                        [{"fill":"toself","line":{"color":"Red"},"name":"Giannis Antetokounmpo","r":[99.0,74.0,89.69999999999999,64.9,91.19999999999999,78.0,92.0,27.400000000000002],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Green"},"name":"Paolo Banchero","r":[89.1,80.0,51.900000000000006,54.6,67.80000000000001,64.80000000000001,55.2,33.900000000000006],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Blue"},"name":"Jimmy Butler","r":[72.0,54.0,66.0,62.6,62.400000000000006,60.0,42.4,41.4],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Orange"},"name":"Kevin Durant","r":[87.0,64.0,63.599999999999994,62.6,81.30000000000001,60.0,52.8,41.3],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Yellow"},"name":"Paul George","r":[79.80000000000001,56.0,57.900000000000006,61.3,67.80000000000001,42.0,41.6,41.3],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Purple"},"name":"Aaron Gordon","r":[53.400000000000006,52.0,50.400000000000006,60.699999999999996,41.7,42.0,52.0,28.999999999999996],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Cyan"},"name":"Tobias Harris","r":[62.099999999999994,54.0,49.5,57.599999999999994,51.599999999999994,37.2,52.0,35.3],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Magenta"},"name":"LeBron James","r":[87.6,56.0,71.1,63.0,77.1,99.60000000000001,58.4,41.0],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Lime"},"name":"Kyle Kuzma","r":[89.1,22.0,47.099999999999994,54.7,66.6,50.400000000000006,52.8,33.6],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Pink"},"name":"Pascal Siakam","r":[75.9,30.0,59.099999999999994,60.099999999999994,65.1,51.599999999999994,56.8,34.599999999999994],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Teal"},"name":"Jabari Smith Jr.","r":[52.800000000000004,64.0,41.400000000000006,57.099999999999994,41.099999999999994,19.200000000000003,64.8,36.3],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Olive"},"name":"Jayson Tatum","r":[90.6,82.0,66.9,60.4,80.69999999999999,58.800000000000004,64.8,37.6],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Brown"},"name":"Karl-Anthony Towns","r":[82.19999999999999,72.0,56.400000000000006,62.5,65.4,36.0,66.4,41.6],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Navy"},"name":"P.J. Washington","r":[57.300000000000004,38.0,36.599999999999994,53.7,38.7,22.799999999999997,44.8,32.0],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Maroon"},"name":"Jalen Williams","r":[71.1,54.0,57.300000000000004,62.1,57.300000000000004,54.0,32.0,42.699999999999996],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"},{"fill":"toself","line":{"color":"Coral"},"name":"Zion Williamson","r":[89.1,56.0,68.4,61.0,68.69999999999999,60.0,46.4,33.300000000000004],"theta":["USG%","DWS","PER","TS%","PTS","AST","TRB","3P%"],"visible":true,"type":"scatterpolar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"polar":{"radialaxis":{"visible":true,"range":[0,100]}},"title":{"text":"Comparison of Kyle Kuzma and selected Power Forwards"},"updatemenus":[{"buttons":[{"args":[{"visible":[true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true]}],"label":"All players","method":"update"},{"args":[{"visible":[true,false,false,false,false,false,false,false,true,false,false,false,false,false,false,false]}],"label":"Giannis Antetokounmpo\tvs. Kyle Kuzma","method":"restyle"},{"args":[{"visible":[false,true,false,false,false,false,false,false,true,false,false,false,false,false,false,false]}],"label":"Paolo Banchero vs. Kyle Kuzma","method":"restyle"},{"args":[{"visible":[false,false,true,false,false,false,false,false,true,false,false,false,false,false,false,false]}],"label":"Jimmy Butler vs. Kyle Kuzma","method":"restyle"},{"args":[{"visible":[false,false,false,true,false,false,false,false,true,false,false,false,false,false,false,false]}],"label":"Kevin Durant vs. Kyle Kuzma","method":"restyle"},{"args":[{"visible":[false,false,false,false,true,false,false,false,true,false,false,false,false,false,false,false]}],"label":"Paul George vs. Kyle Kuzma","method":"restyle"},{"args":[{"visible":[false,false,false,false,false,true,false,false,true,false,false,false,false,false,false,false]}],"label":"Aaron Gordon vs. Kyle Kuzma","method":"restyle"},{"args":[{"visible":[false,false,false,false,false,false,true,false,true,false,false,false,false,false,false,false]}],"label":"Tobias Harris vs. Kyle Kuzma","method":"restyle"},{"args":[{"visible":[false,false,false,false,false,false,false,true,true,false,false,false,false,false,false,false]}],"label":"Lebron James vs. Kyle Kuzma","method":"restyle"},{"args":[{"visible":[false,false,false,false,false,false,false,false,true,false,false,false,false,false,false,false]}],"label":"Kyle Kuzma","method":"update"},{"args":[{"visible":[false,false,false,false,false,false,false,false,true,true,false,false,false,false,false,false]}],"label":"Pascal Siakam vs. Kyle Kuzma","method":"restyle"},{"args":[{"visible":[false,false,false,false,false,false,false,false,true,false,true,false,false,false,false,false]}],"label":"Jabari Smith Jr. vs. Kyle Kuzma","method":"restyle"},{"args":[{"visible":[false,false,false,false,false,false,false,false,true,false,false,true,false,false,false,false]}],"label":"Jayson Tatum vs. Kyle Kuzma","method":"restyle"},{"args":[{"visible":[false,false,false,false,false,false,false,false,true,false,false,false,true,false,false,false]}],"label":"Karl-Anthony Towns vs. Kyle Kuzma","method":"restyle"},{"args":[{"visible":[false,false,false,false,false,false,false,false,true,false,false,false,false,true,false,false]}],"label":"P.J. Washington Towns vs. Kyle Kuzma","method":"restyle"},{"args":[{"visible":[false,false,false,false,false,false,false,false,true,false,false,false,false,false,true,false]}],"label":"Jalen Williams vs. Kyle Kuzma","method":"restyle"},{"args":[{"visible":[false,false,false,false,false,false,false,false,true,false,false,false,false,false,false,true]}],"label":"Zion Williamson vs. Kyle Kuzma","method":"restyle"}],"direction":"down","showactive":true,"type":"dropdown"}]},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('2e7b2e13-0b37-4965-8821-6390d58638b8');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+<p>The same situation happens to Kyle Kuzma. The selected comparison players all have pretty close usage %, but they could all show better advanced splits. Advanced splits are often used to check the efficiency of a player. Under this situation, Kyle Kuzma, as the starting Power Forward of Wshington Wizards, is also a low efficient player.</p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

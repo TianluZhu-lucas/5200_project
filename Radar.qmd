@@ -10,8 +10,8 @@ import plotly.graph_objects as go
 import pandas as pd
 import numpy as np
 
-adv_data = pd.read_excel('/Users/cralexz/Desktop/5200_project/Data23-24/allplayeradv_23-24.xlsx')
-reg_data = pd.read_excel('/Users/cralexz/Desktop/5200_project/Data23-24/allplayer_23-24.xlsx')
+adv_data = pd.read_excel('Data23-24/allplayeradv_23-24.xlsx')
+reg_data = pd.read_excel('Data23-24/allplayer_23-24.xlsx')
 
 # we choose SG and PF have more than 60 games and more than 30 minutes per game
 SG_names = ['Jordan Poole','Jalen Green','Derrick White','Dejounte Murray','Cam Thomas','Anthony Edwards','Grayson Allen','Scottie Barnes','Bogdan Bogdanović','Kentavious Caldwell-Pope','Austin Reaves','Terry Rozier','Devin Vassell']
