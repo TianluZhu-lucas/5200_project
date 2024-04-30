@@ -6,4 +6,3 @@ As basketball fans who live around DC, the basketball team that we care the most
 
 Our project is trying to use the data of the wizards 2023-2024 seasons , with the advance data visiualization skill we learned , to prove how bad Washington wizzards is. We doing it as several perspecive, team performance , player performance and shooting performance.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
