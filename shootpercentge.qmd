@@ -18,7 +18,7 @@ library(readxl)
 ```
 
 ```{r}
-data <- read_excel("/Users/yingminhe/Downloads/allplayer_23-24.xlsx")
+data <- read_excel("Data23-24/allplayer_23-24.xlsx")
 head(data)
 ```
 
@@ -257,10 +257,9 @@ shot_heatmap_chart("Jayson Tatum", type = "PPS")
 shot_heatmap_chart("Jayson Tatum", type = "xFG%")
 ```
 
-Delving deeper, we turn the spotlight on individual performances using Jordan Poole’s shot charts for Points Per Shot (PPS) and expected Field Goal Percentage (xFG%) (see Screen Shots 1.24.49 PM and 1.25.02 PM). These visualizations map Poole's shooting efficiency across different court zones. The shading intensity reflects how his performance either exceeds or falls short of the league average. These insights can pinpoint not only the strengths and weaknesses of individual players but can also guide the team's development focus and game strategy.
+In conclusion , we make several plots about showing how bad washington wizzard is. First plot is compare the overall performance between washington wizzard and rest 29 team mean performace. We can say that wizzard are a low basketball efficiency team, basically they shoot a lot and miss a lot. Also they lose average 10 points per game show as the second plot. Then we compare the player performance. Basically every player's performance is below average. And then we doing same detail shooting perfermance of wizzards. And we also compare the wizzard star player with the other star players. 
 
 ## **Limitations of the Current Analysis**
-
 ### **Data Scope and Availability**
 
 One significant limitation of our analysis lies in the data's scope and availability. We primarily focused on , which, while crucial, do not encompass all aspects of a player's impact on the game. Defensive contributions, playmaking abilities, and other intangible elements like leadership and game IQ are not captured in these shooting metrics. Additionally, our analysis could be constrained by the temporal range of the data, as we have concentrated solely on the 2023-24 season. This snapshot provides limited insight into long-term trends and player development over time.

@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: "quarto_p"
+  title: "How bad Washington Wizzards is"
   navbar:
     left:
       - href: index.qmd
@@ -11,13 +11,11 @@ website:
         text: Team comparison
       - href: player_performance.qmd
         text: Wizzards star player performance
-
+      - href: shootpercentge.qmd
+        text: Shooting performace
 
 format:
   html:
     theme: cosmo
     css: styles.css
     toc: true
-
-
-

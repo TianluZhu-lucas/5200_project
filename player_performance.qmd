@@ -91,8 +91,8 @@ import plotly as ply
 ```{python}
 #| code-fold: true
 
-JP = pd.read_excel('Data23-24\JP_career.xlsx')
-KK = pd.read_excel('Data23-24\KK_career.xlsx')
+JP = pd.read_excel('Data23-24/JP_career.xlsx')
+KK = pd.read_excel('Data23-24/KK_career.xlsx')
 JP
 
 

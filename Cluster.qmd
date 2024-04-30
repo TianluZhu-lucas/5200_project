@@ -20,7 +20,7 @@ player.head()
 
 WAS_players = player.loc[player['Tm'] == 'WAS']
 
-team = pd.read_csv("Data23-24\Allteam.csv")
+team = pd.read_csv("Data23-24/Allteam.csv")
 
 team = team[['Team','PTS','PTS-']]
 
