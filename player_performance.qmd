@@ -1,5 +1,5 @@
 ---
-title: Washington Wizard Star player performance
+title: Washington Wizard player performances
 ---
 
 # Wizard Star Performance
@@ -17,12 +17,12 @@ import plotly as ply
 
 ```{python}
 #| code-fold: true
+
 JP = pd.read_excel('Data23-24\JP_career.xlsx')
 KK = pd.read_excel('Data23-24\KK_career.xlsx')
-col_d = ['Age','Lg','Pos', 'Awards','Tm']
-JP = JP.drop(columns=col_d)
-JP = JP.drop(JP.tail(4).index)
 JP
+
+
 ```
 
 ```{python}
@@ -31,6 +31,9 @@ from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 # Define available stats for dropdown
 import plotly.express as px
+col_d = ['Age','Lg','Pos', 'Awards','Tm']
+JP = JP.drop(columns=col_d)
+JP = JP.drop(JP.tail(4).index)
 numerical_columns = JP.select_dtypes(include=['float64', 'int64']).columns
 available_stats = numerical_columns.tolist()  # Assuming numerical_columns is a pandas Index or Series
 
@@ -63,17 +66,20 @@ fig = go.Figure(data=traces, layout=layout)
 fig.show()
 ```
 
+Jordan Poole is a shooting guard, and the main job for shooting guard is to make shots and score. Thus the best way to evaluate Jordan Poole's performance is to see how efficient he is offensively. First we look at his average point for each season. It seems like he got his career high of point per game last season when he was in the Golden states warriors, and now his average point per game is lower than his second best season. Furthermore his field goal percentage is at his lowest since his second season. As basketball fans we know that this is probabily because now he is dealing with bigger denfensive attention, which means that their opponents are sending better defensive player to guard him whereas for the past few seasons when he was in the Golden States Warrior, the best defensive player of their opponents were guarding Stephen Curry or Klay Thompson. From this line plot, we know that Jordan Poole is not a stable scorer, and he is probabily overated as a star. However, this is only his 5th season in the league and his first season at the Washington Wizards, we should give him more time to adjust the situation. 
 
 
+## Kyle Kuzma
+ 
 ```{python}
 #| code-fold: true
-KK = KK.drop(columns=col_d)
-KK = KK.drop(KK.tail(4).index)
-KK
+KK 
 
 ```
 ```{python}
 #| code-fold: true
+KK = KK.drop(columns=col_d)
+KK = KK.drop(KK.tail(4).index)
 numerical_columnsk = KK.select_dtypes(include=['float64', 'int64']).columns
 available_stats = numerical_columnsk.tolist()  # Assuming numerical_columns is a pandas Index or Series
 
@@ -105,4 +111,14 @@ fig = go.Figure(data=traces, layout=layout)
 # Show the figure
 fig.show()
 ```
+
+Now we will be looking at the career path of Kyle Kuzma, another star of Washington Wizards. As a power forward/small forward, Kyle Kuzma should have the ability to play defense, get rebounds and score. 
+
+First we will evaluate his defense by examing his ability to steal and block. We can see from the line plot that through out his whole career(7 seasons), his steal is in the range of 0.5 to 0.6 per game, and his block ability is incosistent comparing to his steal ability with a range of 0.4 to 0.9 per game. With these informations, we understand that he is not a very good defender. 
+
+In terms of rebounding, Kyle Kuzma did a decent job on his first year as a Washington Wizard, he ended up with an average 8.5 total rebound that season. However, his total rebound has droped since then, and he only average 6.6 rebound this season. The number isn't that bad but the fact that his rebounding performance has constantly droping for two season is concerning. 
+
+Lastly we will evaluate his scoring performance. His average points has been skyrocketing since he was traded to the Washington Wizards. But when we look at his field goal attempt we can also see that the number is skyrocketing. This is because the Washington Wizzards use him as the number star in the team and allows him to shoot more. To further evaluate his scoring performance, we found out that his fiedl goal percentage is at his career best this season with a decent 46%. This shows that he is a decent scorer this season. 
+
+# Wizzard star performances vs other players' performances
 
