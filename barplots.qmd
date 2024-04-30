@@ -1,9 +1,10 @@
 ---
 title: Team Analysis
 ---
+
 ## Washington Wizard performance 
 
-In order to help the Washington Wizzards improve their performance, we need to know what is its weakness and strength. It is obviously unfair if we compare it to the best teams in the league, so we decide to compare Washington Wizzards to the average of the league(excluding Washington Wizzards) in terms of every aspect of the game of basketball. 
+In order to help the Washington Wizards improve their performance, we need to know what is its weakness and strength. It is obviously unfair if we compare it to the best teams in the league, so we decide to compare Washington Wizzards to the average of the league(excluding Washington Wizzards) in terms of every aspect of the game of basketball. 
 
 
 ```{python}
@@ -88,3 +89,56 @@ fig.show()
 ```
 
 From the bar plot we see the statistics of different aspect of the basketball game. We see that some Wizards had some of the stats above the leagues average, if we look closely, we can see that they are actually shots attempts(both 3 point shot and 2 point shot) , shots made(both 3 point shots and 2 point shots), and turnovers(TOV). In other word, although Wizards has taken more shots and made more shots than the league's average, their 3 point shooting percantage percentage is below league's average and their 2 point shooting percentage is only 0.02% higher than the leagues average, which means that Wizards is an ineffient team in terms of offensive end. Furthermore, we can see that Wizards did a bad job on taking care of the ball offensivly and rebounding with turnover above the league's average and total rebound below the league's average. These two are crucial factors for the game of basketball.  
+
+
+```{python}
+#| code-fold: true
+
+import plotly.graph_objects as go
+
+team = pd.read_csv("Data23-24\Allteam.csv")
+
+team = team[['Team','PTS','PTS-']]
+
+# Define the team to highlight in red
+team_to_highlight = 'WAS'
+
+# Create the scatter plot
+fig = go.Figure()
+
+# Plot all teams in blue
+fig.add_trace(go.Scatter(
+    x=team.loc[team['Team'] != team_to_highlight, 'PTS'],
+    y=team.loc[team['Team'] != team_to_highlight, 'PTS-'],
+    mode='markers',
+    marker=dict(color='blue'),
+    text=team.loc[team['Team'] != team_to_highlight, 'Team'],
+    name='Other Teams'
+))
+
+# Plot the selected team in red
+fig.add_trace(go.Scatter(
+    x=team.loc[team['Team'] == team_to_highlight, 'PTS'],
+    y=team.loc[team['Team'] == team_to_highlight, 'PTS-'],
+    mode='markers',
+    marker=dict(color='red'),
+    text=team.loc[team['Team'] == team_to_highlight, 'Team'],
+    name=team_to_highlight
+))
+
+# Set layout
+fig.update_layout(
+    title='Team Points Stats',
+    xaxis=dict(title='Points scored per game '),
+    yaxis=dict(title='Points opponent scored per game'),
+    hovermode='closest'
+)
+
+fig.show()
+```
+
+After some analysis on the Washington wizards on offense, we want to further investigate the game in both aspects of offensive side and defensive side. 
+
+Given the scatterplot presented, an optimal case shall be Boston Celtics. They consistently score over 120 points per game while effectively constraining their opponents to under 110 points. This balanced performance underscores their efficacy in both offensive and defensive dimensions. 
+
+However, Washington Wizards appeared on the upper part of the plot, averaging around 113 points per game but let the opponent score 120+ points on average, exhibit a notable disparity between their offensive and defensive capabilities. It is also noticable that Washington Wizards lose most points per game in the league(123), 3 points more than the second most Utah Jazz(120.3).
