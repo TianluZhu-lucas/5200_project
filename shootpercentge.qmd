@@ -13,21 +13,29 @@ It displays all the interactive graphs which visualize and compare the shooting 
 ## Running Code
 
 ```{r message=TRUE, warning=TRUE}
+#| code-fold: true
+
 library(plotly)
 library(readxl)
 ```
 
 ```{r}
+#| code-fold: true
+
 data <- read_excel("Data23-24/allplayer_23-24.xlsx")
 head(data)
 ```
 
 ```{r echo=FALSE}
+#| code-fold: true
+
 wizards_players <- subset(data, Tm == "WAS")
 celtics_players <- subset(data, Tm == "BOS")
 ```
 
 ```{r echo=FALSE}
+#| code-fold: true
+
 # Create a scatter plot
 plot <- plot_ly()
 
@@ -45,6 +53,8 @@ plot
 ```
 
 ```{r echo=FALSE}
+#| code-fold: true
+
 # Filter out rows with missing shooting statistics
 wizards_players <- na.omit(wizards_players[, c("Player", "FG%", "3P%", "FT%")])
 celtics_players <- na.omit(celtics_players[, c("Player", "FG%", "3P%", "FT%")])
@@ -68,6 +78,8 @@ plot
 ```
 
 ```{r}
+#| code-fold: true
+
 # Define custom colors for each team
 wizards_color <- "#1E90FF"  # Blue
 celtics_color <- "#008000"  # Green
@@ -83,6 +95,8 @@ plot_ly() %>%
 ```
 
 ```{r}
+#| code-fold: true
+
 # Define custom colors for each team
 wizards_color <- "#FF5733"  # Red
 celtics_color <- "#3366CC"  # Blue
@@ -101,6 +115,8 @@ plot_ly() %>%
 When we turn our gaze to the forwards, the contrast in shooting performance becomes even more pronounced. Kyle Kuzma and Jayson Tatum, (these two player all play a roles as leading representing their respective teams, have been dissected through Points Per Shot (PPS) statistics to illustrate this disparity.
 
 ```{r}
+#| code-fold: true
+
 library(tidyverse)
 library(mgcv)
 library(nbastatR)
