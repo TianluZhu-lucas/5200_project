@@ -195,3 +195,309 @@ Lastly we will evaluate his scoring performance. His average points has been sky
 
 # Wizzard star performances vs other players' performances
 
+In this section, we plan to utilize a Radar Chart for a comparative analysis of Jordan Poole and Kyle Kuzma alongside other NBA players in their respective positions. We have restricted our comparison to players who have participated in at least 60 games and averaged a minimum of 30 minutes on the court per game. We have selected eight key metrics for this comparison: PTS (Points Per Game), AST (Assists Per Game), TRB (Rebounds Per Game), 3P% (Three-Point Percentage), USG% (Usage Percentage), TS% (True Shooting Percentage), DWS (Defensive Win Shares), and PER (Player Efficiency Rating). These metrics will help highlight the strengths and weaknesses of Jordan Poole and Kyle Kuzma relative to their peers.
+
+```{python echo=False}
+#| code-fold: true
+import plotly.graph_objects as go
+import pandas as pd
+import numpy as np
+
+adv_data = pd.read_excel('Data23-24/allplayeradv_23-24.xlsx')
+reg_data = pd.read_excel('Data23-24/allplayer_23-24.xlsx')
+
+# we choose SG and PF have more than 60 games and more than 30 minutes per game
+SG_names = ['Jordan Poole','Jalen Green','Derrick White','Dejounte Murray','Cam Thomas','Anthony Edwards','Grayson Allen','Scottie Barnes','Bogdan Bogdanović','Kentavious Caldwell-Pope','Austin Reaves','Terry Rozier','Devin Vassell']
+
+PF_names = ['Giannis Antetokounmpo','Paolo Banchero','Jimmy Butler','Kevin Durant','Paul George','Aaron Gordon','Tobias Harris','LeBron James','Kyle Kuzma','Pascal Siakam','Jabari Smith Jr.','Jayson Tatum','Karl-Anthony Towns','P.J. Washington','Jalen Williams','Zion Williamson']
+
+SG_df_reg = reg_data[reg_data['Player'].isin(SG_names)]
+SG_df_reg.drop_duplicates(subset=['Player'], inplace=True)
+SG_df_adv = adv_data[adv_data['Player'].isin(SG_names)]
+SG_df_adv.drop_duplicates(subset=['Player'], inplace=True)
+
+PF_df_reg = reg_data[reg_data['Player'].isin(PF_names)]
+PF_df_reg.drop_duplicates(subset=['Player'], inplace=True)
+PF_df_adv = adv_data[adv_data['Player'].isin(PF_names)]
+PF_df_adv.drop_duplicates(subset=['Player'], inplace=True)
+
+#columns_to_include = ['Player','OWS','DWS','VORP','TS%','PTS','AST','TRB','3P%']
+SG_total = pd.merge(SG_df_adv, SG_df_reg, on='Player', how='inner')
+SG_final = SG_total.loc[:, ['Player','USG%','DWS','PER','TS%','PTS','AST','TRB','3P%']]
+
+PF_total = pd.merge(PF_df_adv, PF_df_reg, on='Player', how='inner')
+PF_final = PF_total.loc[:, ['Player','USG%','DWS','PER','TS%','PTS','AST','TRB','3P%']]
+
+PF_final = PF_final.transpose()
+SG_final = SG_final.transpose()
+
+PF_final = PF_final.reset_index()
+PF_final.columns = PF_final.iloc[0]
+PF_plot= PF_final[1:].reset_index(drop=True)
+PF_plot.rename(columns={'Player': 'Splits'}, inplace=True)
+
+SG_final = SG_final.reset_index()
+SG_final.columns = SG_final.iloc[0]
+SG_plot= SG_final[1:].reset_index(drop=True)
+SG_plot.rename(columns={'Player': 'Splits'}, inplace=True)
+
+SG_plot.iloc[0,1:] = SG_plot.iloc[0,1:] * 3
+SG_plot.iloc[1,1:] = SG_plot.iloc[1,1:] * 20
+SG_plot.iloc[2,1:] = SG_plot.iloc[2,1:] * 5
+SG_plot.iloc[3,1:] = SG_plot.iloc[3,1:] * 100
+SG_plot.iloc[4,1:] = SG_plot.iloc[4,1:] * 3
+SG_plot.iloc[5,1:] = SG_plot.iloc[5,1:] * 15
+SG_plot.iloc[6,1:] = SG_plot.iloc[6,1:] * 12
+SG_plot.iloc[7,1:] = SG_plot.iloc[7,1:] * 100
+SG_plot.set_index('Splits', inplace=True)
+
+PF_plot.iloc[0,1:] = PF_plot.iloc[0,1:] * 3
+PF_plot.iloc[1,1:] = PF_plot.iloc[1,1:] * 20
+PF_plot.iloc[2,1:] = PF_plot.iloc[2,1:] * 3
+PF_plot.iloc[3,1:] = PF_plot.iloc[3,1:] * 100
+PF_plot.iloc[4,1:] = PF_plot.iloc[4,1:] * 3
+PF_plot.iloc[5,1:] = PF_plot.iloc[5,1:] * 12
+PF_plot.iloc[6,1:] = PF_plot.iloc[6,1:] * 8
+PF_plot.iloc[7,1:] = PF_plot.iloc[7,1:] * 100
+PF_plot.set_index('Splits', inplace=True)
+```
+
+
+From the plot above, we could clearly see the difference between Jordan Poole and other shooting guards with more than 60 games played and 30 minutes averaged per game. Jordan Poole has the highest usage among these players, but does not show a significant lead on other metrics like PER, DWS. This means Jordan Poole is not a highly efficient player, and he is not likely to bring wins for Washington Wizards in this season.
+
+```{python}
+#| code-fold: true
+# Create a radar chart
+fig = go.Figure()
+
+colors = ["Red", "Green","Blue","Orange","Yellow","Purple","Cyan","Magenta","Lime","Pink","Teal","Olive","Brown"]
+
+
+for i, column in enumerate(SG_plot.columns):
+    fig.add_trace(go.Scatterpolar(
+        r=SG_plot[column].values,  # Access the column values for each car
+        theta=SG_plot.index,       # Use the DataFrame index as categories
+        fill='toself',
+        name=column,
+        line=dict(color=colors[i]),
+        visible=True
+    ))
+
+
+# Update the layout
+fig.update_layout(
+    title="Comparison of Jordan Poole with selected Shooting Guards",
+    polar=dict(
+        radialaxis=dict(
+            visible=True,
+            range=[0, 100]  # Set range according to your data
+        )
+    ),
+updatemenus=[{
+        "type": "dropdown",
+        "buttons": [
+            {
+                "label": "All players",
+                "method": "update",
+                "args": [{"visible": [True, True, True,True,True,True,True,True,True,True,True,True,True]}]
+            },
+            {
+                "label": "Grayson Allen vs. Jordan Poole",
+                "method": "restyle",
+                "args": [{"visible": [True, False, False, False,False,False,False,True,False,False,False,False,False]}]
+            },
+            {
+                "label": "Scottie Barnes vs. Jordan Poole",
+                "method": "restyle",
+                "args": [{"visible": [False, True, False,False,False,False,False,True,False,False,False,False,False]}]
+            },
+            {
+                "label": "Bogdan Bogdanović vs. Jordan Poole",
+                "method": "restyle",
+                "args": [{"visible": [False, False, True,False,False,False,False,True,False,False,False,False,False]}]
+            },
+            {
+                "label": "Kentavious Caldwell-Pope vs. Jordan Poole",
+                "method": "restyle",
+                "args": [{"visible": [False, False, False, True,False,False,False,True,False,False,False,False,False]}]
+            },
+            {
+                "label": "Anthony Edwards vs. Jordan Poole",
+                "method": "restyle",
+                "args": [{"visible": [False, False, False, False, True, False,False,True,False,False,False,False,False]}]
+            },
+            {
+                "label": "Jalen Green vs. Jordan Poole",
+                "method": "restyle",
+                "args": [{"visible": [False, False, False,False,False,True,False,True,False,False,False,False,False]}]
+            },
+            {
+                "label": "Dejounte Murray vs. Jordan Poole",
+                "method": "restyle",
+                "args": [{"visible": [False, False,False, False,False,False,True,True,False,False,False,False,False]}]
+            },
+            {
+                "label": "Jordan Poole",
+                "method": "update",
+                "args": [{"visible": [False, False,False,False,False,False,False,True,False,False,False,False,False]}]
+            },
+            {
+                "label": "Austin Reaves vs. Jordan Poole",
+                "method": "restyle",
+                "args": [{"visible": [False, False,False,False,False,False,False,True,True,False,False,False,False]}]
+            },
+            {
+                "label": "Terry Rozier vs. Jordan Poole",
+                "method": "restyle",
+                "args": [{"visible": [False, False,False,False,False,False,False,True,False,True,False,False,False]}]
+            },
+            {
+                "label": "Cam Thomas vs. Jordan Poole",
+                "method": "restyle",
+                "args": [{"visible": [False, False,False,False,False,False,False,True,False,False,True,False,False]}]
+            },
+            {
+                "label": "Devin Vassell vs. Jordan Poole",
+                "method": "restyle",
+                "args": [{"visible": [False, False,False,False,False,False,False,True,False,False,False,True,False]}]
+            },
+            {
+                "label": "Derrick White vs. Jordan Poole",
+                "method": "restyle",
+                "args": [{"visible": [False, False,False,False,False,False,False,True,False,False,False,False,True]}]
+            }
+        ],
+        "direction": "down",
+        "showactive": True,
+    }]
+)
+# Show the plot
+fig.show()
+```
+
+```{python}
+#| code-fold: true
+# Create a radar chart
+fig = go.Figure()
+
+colors_PF = ["Red", "Green","Blue","Orange","Yellow","Purple","Cyan","Magenta","Lime","Pink","Teal","Olive","Brown","Navy","Maroon","Coral"]
+
+
+for i, column in enumerate(PF_plot.columns):
+    fig.add_trace(go.Scatterpolar(
+        r=PF_plot[column].values,  # Access the column values for each car
+        theta=PF_plot.index,       # Use the DataFrame index as categories
+        fill='toself',
+        name=column,
+        line=dict(color=colors_PF[i]),
+        visible=True
+    ))
+
+
+# Update the layout
+fig.update_layout(
+    title="Comparison of Kyle Kuzma and selected Power Forwards",
+    polar=dict(
+        radialaxis=dict(
+            visible=True,
+            range=[0, 100]  # Set range according to your data
+        )
+    ),
+updatemenus=[{
+        "type": "dropdown",
+        "buttons": [
+            {
+                "label": "All players",
+                "method": "update",
+                "args": [{"visible": [True, True, True,True,True,True,True,True,True,True,True,True,True,True,True,True]}]
+            },
+            {
+                "label": "Giannis Antetokounmpo	vs. Kyle Kuzma",
+                "method": "restyle",
+                "args": [{"visible": [True, False, False, False,False,False,False,False,True,False,False,False,False,False,False,False]}]
+            },
+            {
+                "label": "Paolo Banchero vs. Kyle Kuzma",
+                "method": "restyle",
+                "args": [{"visible": [False, True, False, False,False,False,False,False,True,False,False,False,False,False,False,False]}]
+            },
+            {
+                "label": "Jimmy Butler vs. Kyle Kuzma",
+                "method": "restyle",
+                "args": [{"visible": [False, False, True, False,False,False,False,False,True,False,False,False,False,False,False,False]}]
+            },
+            {
+                "label": "Kevin Durant vs. Kyle Kuzma",
+                "method": "restyle",
+                "args": [{"visible": [False, False, False, True,False,False,False,False,True,False,False,False,False,False,False,False]}]
+            },
+            {
+                "label": "Paul George vs. Kyle Kuzma",
+                "method": "restyle",
+                "args": [{"visible": [False, False, False, False,True,False,False,False,True,False,False,False,False,False,False,False]}]
+            },
+            {
+                "label": "Aaron Gordon vs. Kyle Kuzma",
+                "method": "restyle",
+                "args": [{"visible": [False, False, False, False,False,True,False,False,True,False,False,False,False,False,False,False]}]
+            },
+            {
+                "label": "Tobias Harris vs. Kyle Kuzma",
+                "method": "restyle",
+                "args": [{"visible": [False, False, False, False,False,False,True,False,True,False,False,False,False,False,False,False]}]
+            },
+            {
+                "label": "Lebron James vs. Kyle Kuzma",
+                "method": "restyle",
+                "args": [{"visible": [False, False, False, False,False,False,False,True,True,False,False,False,False,False,False,False]}]
+            },
+            {
+                "label": "Kyle Kuzma",
+                "method": "update",
+                "args": [{"visible": [False, False, False, False,False,False,False,False,True,False,False,False,False,False,False,False]}]
+            },
+            {
+                "label": "Pascal Siakam vs. Kyle Kuzma",
+                "method": "restyle",
+                "args": [{"visible": [False, False, False, False,False,False,False,False,True,True,False,False,False,False,False,False]}]
+            },
+            {
+                "label": "Jabari Smith Jr. vs. Kyle Kuzma",
+                "method": "restyle",
+                "args": [{"visible": [False, False, False, False,False,False,False,False,True,False,True,False,False,False,False,False]}]
+            },
+            {
+                "label": "Jayson Tatum vs. Kyle Kuzma",
+                "method": "restyle",
+                "args": [{"visible": [False, False, False, False,False,False,False,False,True,False,False,True,False,False,False,False]}]
+            },
+            {
+                "label": "Karl-Anthony Towns vs. Kyle Kuzma",
+                "method": "restyle",
+                "args": [{"visible": [False, False, False, False,False,False,False,False,True,False,False,False,True,False,False,False]}]
+            },
+            {
+                "label": "P.J. Washington Towns vs. Kyle Kuzma",
+                "method": "restyle",
+                "args": [{"visible": [False, False, False, False,False,False,False,False,True,False,False,False,False,True,False,False]}]
+            },
+            {
+                "label": "Jalen Williams vs. Kyle Kuzma",
+                "method": "restyle",
+                "args": [{"visible": [False, False, False, False,False,False,False,False,True,False,False,False,False,False,True,False]}]
+            },
+            {
+                "label": "Zion Williamson vs. Kyle Kuzma",
+                "method": "restyle",
+                "args": [{"visible": [False, False, False, False,False,False,False,False,True,False,False,False,False,False,False,True]}]
+            }
+        ],
+        "direction": "down",
+        "showactive": True,
+    }]
+)
+# Show the plot
+fig.show()
+```
+
+The same situation happens to Kyle Kuzma. The selected comparison players all have pretty close usage %, but they could all show better advanced splits. Advanced splits are often used to check the efficiency of a player. Under this situation, Kyle Kuzma, as the starting Power Forward of Wshington Wizards, is also a low efficient player.
