@@ -19,13 +19,19 @@ SG_names = ['Jordan Poole','Jalen Green','Derrick White','Dejounte Murray','Cam 
 PF_names = ['Giannis Antetokounmpo','Paolo Banchero','Jimmy Butler','Kevin Durant','Paul George','Aaron Gordon','Tobias Harris','LeBron James','Kyle Kuzma','Pascal Siakam','Jabari Smith Jr.','Jayson Tatum','Karl-Anthony Towns','P.J. Washington','Jalen Williams','Zion Williamson']
 
 SG_df_reg = reg_data[reg_data['Player'].isin(SG_names)]
+SG_df_reg = SG_df_reg.copy()
 SG_df_reg.drop_duplicates(subset=['Player'], inplace=True)
+
 SG_df_adv = adv_data[adv_data['Player'].isin(SG_names)]
+SG_df_adv = SG_df_adv.copy()
 SG_df_adv.drop_duplicates(subset=['Player'], inplace=True)
 
 PF_df_reg = reg_data[reg_data['Player'].isin(PF_names)]
+PF_df_reg = PF_df_reg.copy()
 PF_df_reg.drop_duplicates(subset=['Player'], inplace=True)
+
 PF_df_adv = adv_data[adv_data['Player'].isin(PF_names)]
+PF_df_adv = PF_df_adv.copy()
 PF_df_adv.drop_duplicates(subset=['Player'], inplace=True)
 
 #columns_to_include = ['Player','OWS','DWS','VORP','TS%','PTS','AST','TRB','3P%']
